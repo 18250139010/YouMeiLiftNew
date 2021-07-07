@@ -1,0 +1,98 @@
+//
+//  PrefixHeader.pch
+
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+
+#import <UIKit/UIKit.h>
+#import "AppDelegate.h"
+//#import "AFNetworking.h"
+//#import "MJExtension.h"
+//#import "DSToast.h"
+////#import <SVProgressHUD/SVProgressHUD.h>
+//#import "KLNetworkHandler.h"
+//#import "GowimDefine.h"
+//#import "GowimModel.h"
+//#import "GowimManager.h"
+//#import "WishTreePersonimAddressVC.h"
+#import "DMTool.h"
+//宏定义
+#define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
+#define FONT_SIZE(size) ([UIFont systemFontOfSize:FontSize(size))
+
+#define kRatioW SCREEN_WIDTH/375.0
+
+#define ShareAppDelegate  ([UIApplication sharedApplication].delegate)
+
+#define WS(weakself)  __weak __typeof(&*self) weakself = self;
+
+#define HEIGHT   [[UIScreen mainScreen] bounds].size.height
+#define WIDTH    [[UIScreen mainScreen] bounds].size.width
+#define NavigationHeight (HEIGHT >= 812.0 ? 88.0 : 64.0)
+
+#define RGBA(R, G, B, A)     [UIColor colorWithRed:R/255.f green:G/255.f blue:B/255.f alpha:A]
+
+#define MAINCOLOR   RGBA(62, 137, 63, 1) // 3E893F
+#define ThemColor  HEXCOLOR(0xFCD345)
+//设置颜色
+#define HEXCOLOR(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+//设置颜色与透明度
+#define HEXCOLORAL(rgbValue, al) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:al]
+//颜色
+#define RGB(A,B,C) [UIColor colorWithRed:A/255.0 green:B/255.0 blue:C/255.0 alpha:1.0]
+#define RGBA(A,B,C,D) [UIColor colorWithRed:A/255.0 green:B/255.0 blue:C/255.0 alpha:D]
+
+
+#define IMAGE_NAME(x) [UIImage imageNamed:x]
+
+#define   ISLOGIN      [[NSUserDefaults standardUserDefaults] boolForKey:@"IS_LOGIN"]
+
+#define ViewBorderRadius(View, Radius, Width, Color)\
+\
+[View.layer setCornerRadius:(Radius)];\
+[View.layer setMasksToBounds:YES];\
+[View.layer setBorderWidth:(Width)];\
+[View.layer setBorderColor:[Color CGColor]]
+
+#define ViewRadius(View, Radius)\
+\
+[View.layer setCornerRadius:(Radius)];\
+[View.layer setMasksToBounds:YES]
+
+#define UD_ICON @"UD_ICON"
+#define UD_NAME @"UD_NAME"
+#define UD_MOBILE @"UD_MOBILE"
+#define UD_PWD @"UD_PSWord"
+
+#define USER_ID @"13978214090"
+#define USER_PSW @"666888"
+
+
+
+
+static inline CGFloat FontSize(CGFloat fontSize){
+    if (SCREEN_WIDTH==320) {
+        return fontSize-2;
+    }else if (SCREEN_WIDTH==375){
+        return fontSize;
+    }else{
+        return fontSize+1;
+    }
+}
+
+static inline int DMInt(CGFloat fontSize){
+    
+    //四舍五入
+    CGFloat roundC = roundf(fontSize);
+    
+    return (int)roundC;
+}
+
+
+#endif /* PrefixHeader_pch */
